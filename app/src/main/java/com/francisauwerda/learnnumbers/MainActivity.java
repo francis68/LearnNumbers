@@ -2,12 +2,19 @@ package com.francisauwerda.learnnumbers;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
+/**
+ * Main class for the Learn Numbers app.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private final static int HIGHEST_NUMBER = 100;
@@ -30,6 +37,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    /**
+     * Creates the options menu on the main layout.
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.settings, menu);
+        return true;
+    }
+
+    /**
+     * Handles when the settings cog has been clicked.
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_settings) {
+            Toast.makeText(this, "Open Settings", Toast.LENGTH_SHORT).show();
+
+        }
+        return true;
     }
 
     private void generateRandomNumber() {
