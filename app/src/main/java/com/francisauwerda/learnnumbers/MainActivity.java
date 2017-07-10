@@ -1,5 +1,7 @@
 package com.francisauwerda.learnnumbers;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -58,11 +60,17 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_settings) {
-            Toast.makeText(this, "Open Settings", Toast.LENGTH_SHORT).show();
+        int id = item.getItemId();
 
+        if (id == R.id.action_settings) {
+            Context context = this;
+            Class destinationActivity = Settings.class;
+            Intent intent = new Intent(context, destinationActivity);
+            startActivity(intent);
+            return true;
         }
-        return true;
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void generateRandomNumber() {
