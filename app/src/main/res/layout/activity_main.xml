@@ -12,46 +12,59 @@
         android:background="@drawable/numberbackground"/>
 
     <TextView
-        android:id="@+id/number_view"
+        android:id="@+id/tv_number_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="101"
         android:textColor="@android:color/white"
         android:padding="50sp"
         android:layout_gravity="center"
         android:textSize="112sp"
         android:textAlignment="center"
         android:visibility="visible"
-        android:clickable="true"
         />
 
+    <TextView
+        android:id="@+id/tv_clickable_area"
+        android:textColor="@android:color/white"
+        android:layout_width="250sp"
+        android:layout_height="300sp"
+        android:layout_centerInParent="true"/>
+
+    <ImageView
+        android:id="@+id/iv_touch_icon"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/ic_touch_app_white_48px"
+        android:layout_centerInParent="true"
+        />
 
     <TextView
         android:id="@+id/tv_translation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="_______"
         android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         android:textAlignment="center"
-        android:visibility="visible"
-        android:layout_above="@+id/shuffle_button"
-        android:layout_marginBottom="14dp"
+        android:visibility="invisible"
+        android:layout_marginBottom="45dp"
         android:layout_alignStart="@+id/tv_card_background"
-        android:layout_alignEnd="@+id/tv_card_background" />
+        android:layout_alignEnd="@+id/tv_card_background"
+        android:layout_alignParentBottom="true"/>
 
 
-    <Button style="@style/Widget.AppCompat.Button.Colored"
-        android:id="@+id/shuffle_button"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/b_unlock"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="25dp"
-        android:textSize="14sp"
+        android:text="@string/unhide"
+        android:textSize="24sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginBottom="35dp"
+        android:visibility="invisible"
+        android:layout_centerInParent="true"
         android:layout_alignParentBottom="true"
-        android:text="@string/button_text"
-        android:textAllCaps="true"
-        />
+        style="@style/Widget.AppCompat.Button.Borderless"/>
 
 </RelativeLayout>
 

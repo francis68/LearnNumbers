@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Learn Numbers</string>
-    <string name="button_text">Shuffle</string>
-    <string name="settings_min">Min</string>
-    <string name="settings_max">Max</string>
+    <string name="unhide">see translation</string>
+    <string name="initial_number">tap here</string>
 </resources>

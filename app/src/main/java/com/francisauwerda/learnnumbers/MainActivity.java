@@ -2,8 +2,6 @@ package com.francisauwerda.learnnumbers;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetFileDescriptor;
-import android.content.res.AssetManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,11 +9,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
@@ -28,8 +25,10 @@ public class MainActivity extends AppCompatActivity {
     private final static int HIGHEST_NUMBER = 100;
     private TextView mNumberView;
     private TextView mTranslation;
-    private Button mShuffleButton;
+    private TextView mClickable;
+    private Button mSeeTranslation;
     private int mCurrentNumber;
+    private ImageView mTouchIcon;
     private ArrayList<String> mSpanishTextArray = new ArrayList<>();
 
     @Override
@@ -37,25 +36,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loadNumbersIntoArray();
-
-        mNumberView = (TextView) findViewById(R.id.number_view);
-        mNumberView.setText("?");
-
+        mNumberView = (TextView) findViewById(R.id.tv_number_view);
         mTranslation = (TextView) findViewById(R.id.tv_translation);
+        mSeeTranslation = (Button) findViewById(R.id.b_unlock);
+        mTouchIcon = (ImageView) findViewById(R.id.iv_touch_icon);
+        mClickable = (TextView) findViewById(R.id.tv_clickable_area);
+
+        loadNumbersIntoArray();
         setUpTranslation();
-
-        mShuffleButton = (Button) findViewById(R.id.shuffle_button);
-        mShuffleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mTranslation.setText("_____");
-                generateRandomNumber();
-            }
-        });
-
+        setUpClickableArea();
     }
 
+    /**
+     * Reads the asset file translations-spanish.txt and adds each line to an ArrayList.
+     */
     private void loadNumbersIntoArray() {
         BufferedReader reader = null;
         try {
@@ -73,26 +67,53 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Setting up the click listener for the Number Card.
+     * Set up the on click listeners fo the clickable area of the card.
+     * This basically shows and hides everything and calls the generate random number method.
      */
-    private void setUpTranslation() {
-        mTranslation.setOnClickListener(new View.OnClickListener() {
+    private void setUpClickableArea() {
+        mClickable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String translation = translateNumber(mCurrentNumber);
-                mTranslation.setText(translation);
+                mTouchIcon.setVisibility(View.INVISIBLE);
+                mTranslation.setText(R.string.unhide);
+                mTranslation.setVisibility(View.INVISIBLE);
+                mSeeTranslation.setVisibility(View.VISIBLE);
+                generateRandomNumber();
             }
         });
     }
 
+    /**
+     * Setting up the click listener for the See Translation button.
+     * This shows and hides everything and calls the translateNumber method to find the
+     * translation inside the ArrayList.
+     */
+    private void setUpTranslation() {
+        mSeeTranslation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String translation = translateNumber(mCurrentNumber);
+                mTranslation.setText(translation);
+                mTranslation.setVisibility(View.VISIBLE);
+                mSeeTranslation.setVisibility(View.INVISIBLE);
+
+            }
+        });
+    }
+
+    /**
+     *
+     * @param currentNumber The current number which is shown.
+     * @return The string representation of the current number.
+     */
     public String translateNumber(int currentNumber) {
         return mSpanishTextArray.get(currentNumber);
     }
 
     /**
-     * Creates the options menu on the main layout.
-     * @param menu
-     * @return
+     * Creates the settings page on the main layout.
+     * @param menu The current context.
+     * @return true when successful.
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -103,8 +124,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Handles when the settings cog has been clicked.
-     * @param item
-     * @return
+     * @param item which item has been selected.
+     * @return returns true when successful.
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -121,9 +142,14 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Generates a random number from 0 to HIGHEST_NUMBER and assigns
+     * it to Number View TextView.
+     */
     private void generateRandomNumber() {
         Random rand = new Random();
         int i = rand.nextInt(HIGHEST_NUMBER) + 1;
+        // Hold a copy of the current number for when we get the translation.
         mCurrentNumber = i;
         mNumberView.setText(String.valueOf(i));
     }
