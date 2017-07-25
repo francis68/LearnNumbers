@@ -6,8 +6,8 @@
 
     <TextView
         android:id="@+id/tv_card_background"
-        android:layout_width="250sp"
-        android:layout_height="300sp"
+        android:layout_width="250dp"
+        android:layout_height="300dp"
         android:layout_centerInParent="true"
         android:background="@drawable/numberbackground"/>
 
@@ -27,12 +27,13 @@
     <TextView
         android:id="@+id/tv_clickable_area"
         android:textColor="@android:color/white"
-        android:layout_width="250sp"
-        android:layout_height="300sp"
+        android:layout_width="250dp"
+        android:layout_height="300dp"
         android:layout_centerInParent="true"/>
 
     <ImageView
         android:id="@+id/iv_touch_icon"
+        android:contentDescription="@string/content_description_touch"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:background="@drawable/ic_touch_app_white_48px"

@@ -2,4 +2,6 @@
     <string name="app_name">Learn Numbers</string>
     <string name="unhide">see translation</string>
     <string name="initial_number">tap here</string>
+    <string name="content_description_touch">A touch icon to prompt the user to touch the card</string>
+    <string name="settings_title">Settings</string>
 </resources>

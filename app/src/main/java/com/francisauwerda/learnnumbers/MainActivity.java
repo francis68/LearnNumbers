@@ -107,6 +107,11 @@ public class MainActivity extends AppCompatActivity {
      * @return The string representation of the current number.
      */
     public String translateNumber(int currentNumber) {
+        // Here, I have to make sure I don't request a number bigger than the Array.
+        if (currentNumber > mSpanishTextArray.size()) {
+            // The number of lines in the asset file is less than the HIGHEST_NUMBER
+            return "There has been an error, please pray for an update";
+        }
         return mSpanishTextArray.get(currentNumber);
     }
 
@@ -118,7 +123,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.settings, menu);
+        // Currently commented out until we have functions for the page.
+        //inflater.inflate(R.menu.settings, menu);
         return true;
     }
 
@@ -148,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void generateRandomNumber() {
         Random rand = new Random();
-        int i = rand.nextInt(HIGHEST_NUMBER) + 1;
+        int i = rand.nextInt(HIGHEST_NUMBER + 1);
         // Hold a copy of the current number for when we get the translation.
         mCurrentNumber = i;
         mNumberView.setText(String.valueOf(i));
