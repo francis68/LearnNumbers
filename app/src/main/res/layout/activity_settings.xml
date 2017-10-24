@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_settings"
+    android:name="com.francisauwerda.learnnumbers.SettingsFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/tv_settings_help"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Settings page coming soon..."
-        android:textSize="22sp"
-        android:fontFamily="sans-serif"
-        android:paddingTop="16dp"
-        android:paddingStart="16dp"/>
-
-</FrameLayout>
+    android:layout_height="match_parent"/>
 
 

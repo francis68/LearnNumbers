@@ -1,7 +1,24 @@
 <resources>
     <string name="app_name">Learn Numbers</string>
-    <string name="unhide">see translation</string>
+    <string name="see_translation">see translation in </string>
+    <string name="see_translation_english">english translation</string>
+    <string name="see_translation_spanish">spanish translation</string>
     <string name="initial_number">tap here</string>
     <string name="content_description_touch">A touch icon to prompt the user to touch the card</string>
     <string name="settings_title">Settings</string>
+
+    <!--Label for the language preference-->
+    <string name="pref_language_label">Language</string>
+
+    <!--Label for the Spanish language preference-->
+    <string name="pref_language_label_spanish">Spanish</string>
+    <!--Label for the Spanish language preference-->
+    <string name="pref_language_label_english">English</string>
+    
+    <string name="pref_language_key">language</string>
+
+    <!--Value in Shared Preferences for spanish language option-->
+    <string name="pref_language_value_spanish" translatable="false">spanish</string>
+    <!--Value in Shared Preferences for english language option-->
+    <string name="pref_language_value_english" translatable="false">english</string>
 </resources>
