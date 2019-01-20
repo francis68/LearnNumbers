@@ -68,9 +68,10 @@ public class MainActivity extends AppCompatActivity implements
      * Reads the asset file and adds each line to an ArrayList.
      */
     private void loadNumbersIntoArray(String language) {
-        BufferedReader reader = null;
-        mNumberTextArray.clear();
         try {
+            BufferedReader reader;
+            mNumberTextArray.clear();
+
             reader = new BufferedReader(
                     new InputStreamReader(getAssets().open(language + ".txt")));
 
@@ -122,12 +123,10 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     /**
-     *
      * @param currentNumber The current number which is shown.
      * @return The string representation of the current number.
      */
     public String translateNumber(int currentNumber) {
-        // Here, I have to make sure I don't request a number bigger than the Array.
         if (currentNumber > mNumberTextArray.size()) {
             // The number of lines in the asset file is less than the HIGHEST_NUMBER
             return "There has been an error, please pray for an update";
@@ -148,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     /**
-     * Handles when the settings cog has been clicked.
+     * Handles when the settings button has been clicked.
      * @param item which item has been selected.
      * @return returns true when successful.
      */
